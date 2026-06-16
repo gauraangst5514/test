@@ -7,9 +7,7 @@ def filter_active_high_priority_tasks(tasks: List[Task]) -> List[Task]:
     """
     filtered = []
     for t in tasks:
-        # BUG: The logic here is flawed. It checks if it IS completed instead of NOT completed.
-        # It also checks priority > 2 (low priority) instead of priority <= 2.
-        if t.is_completed and t.priority > 2:
+        if not t.is_completed and t.priority <= 2:
             filtered.append(t)
     return filtered
 
